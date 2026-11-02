@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Safety in Surgical Robotics · IEEE RAS Working Group</title>
+<meta name="description" content="IEEE RAS Working Group on Safety in Surgical Robotics: how safety is defined, evaluated and communicated in surgical robotics research.">
+<meta property="og:title" content="Safety in Surgical Robotics · IEEE RAS Working Group">
+<meta property="og:description" content="What is safety in surgical robotics, and how do we assess it?">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B1530'/%3E%3Cpath d='M8 23 16 9l8 14' fill='none' stroke='%23FFB020' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#hero">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 25 16 7l10 18" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="19" r="2.6" fill="var(--amber)"/></svg></span>
+      <span class="brand-txt"><b>Safety in Surgical Robotics</b><small>IEEE RAS Working Group</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Sections">
+      <a href="#scope">Scope</a>
+      <a href="#map">Evidence map</a>
+      <a href="#words">Terminology</a>
+      <a href="#programme">Programme</a>
+      <a href="#people">People</a>
+      <a href="#join" class="nav-cta">Get involved</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="wrap hero-in">
+    <p class="kicker"><span class="dot"></span>Approved IEEE RAS Working Group · 2026–2028</p>
+    <h1 class="hero-h">
+      <span class="hero-word">Safe</span>
+      <span class="hero-q" aria-live="polite"><span id="heroQ">for which tissue?</span></span>
+    </h1>
+    <p class="hero-lede">Nearly every surgical robot is motivated by safety, yet the word rarely arrives with a hazard, a condition or a measurement attached. This Working Group asks what safety means technically, how it is evaluated, and what evidence a safety claim should carry.</p>
+    <div class="hero-actions">
+      <a class="btn btn-amber" href="#map">Map the evidence for your system</a>
+      <a class="btn btn-ghost" href="#join">Join the discussion</a>
+    </div>
+    <ol class="hero-spectrum" aria-label="The seven technical dimensions of safety the group examines">
+      <li style="--c:var(--d1)">Physical interaction</li>
+      <li style="--c:var(--d2)">Mechanical design</li>
+      <li style="--c:var(--d3)">Sensing</li>
+      <li style="--c:var(--d4)">Control</li>
+      <li style="--c:var(--d5)">Autonomy</li>
+      <li style="--c:var(--d6)">Human operation</li>
+      <li style="--c:var(--d7)">Failure behavior</li>
+    </ol>
+  </div>
+  <canvas id="field" class="hero-field" aria-hidden="true"></canvas>
+</section>
+
+<!-- ============ SCOPE ============ -->
+<section class="sec light" id="scope">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-l">
+        <p class="eyebrow">Why this group</p>
+        <h2>One word, many measurements, no shared standard of evidence.</h2>
+      </div>
+      <div class="split-r prose">
+        <p>Studies support safety with force, pressure, stiffness, speed, accuracy, failure tolerance or controllability. Each measure is relevant and none is sufficient, because its meaning depends on the procedure, the anatomy, the task, the operating condition and the failure mode in question. Two papers can both report a “safe” robot and share no comparable quantity.</p>
+        <p>The group grew out of the ICRA 2026 workshop <em>Soft ≠ Safe? Rethinking Softness in Medical Robotics</em>, which showed that even a property as intuitive as softness does not settle the question. The scope is deliberately wider: rigid, hybrid and soft systems; sensing and control; human–robot interaction; autonomy; and behavior under faults.</p>
+      </div>
+    </div>
+
+    <div class="objectives">
+      <article class="obj" style="--c:var(--d1)"><span class="obj-n">01</span><h3>Clarify terms</h3><p>How safety, compliance, robustness, backdrivability and safe failure are used across communities.</p></article>
+      <article class="obj" style="--c:var(--d3)"><span class="obj-n">02</span><h3>Identify dimensions</h3><p>Physical interaction, mechanical design, sensing, control, autonomy, human operation and failure behavior.</p></article>
+      <article class="obj" style="--c:var(--d4)"><span class="obj-n">03</span><h3>Compare evidence</h3><p>The measures, experimental tests and assumptions currently used to support safety claims.</p></article>
+      <article class="obj" style="--c:var(--d6)"><span class="obj-n">04</span><h3>Sharpen claims</h3><p>State what is claimed, under which conditions it holds, and what evidence supports it.</p></article>
+      <article class="obj" style="--c:var(--d7)"><span class="obj-n">05</span><h3>Connect practice</h3><p>Bring clinical and industrial experience into the academic discussion.</p></article>
+    </div>
+
+    <aside class="notice">
+      <strong>What the group does not do.</strong> It does not certify devices, replace regulatory testing or write a formal standard. It works earlier, where researchers still choose their definitions, tests and evidence.
+    </aside>
+  </div>
+</section>
+
+<!-- ============ EVIDENCE MAP ============ -->
+<section class="sec tool" id="map">
+  <div class="wrap">
+    <div class="tool-head">
+      <p class="eyebrow">Interactive · Evidence map</p>
+      <h2>Where does your safety argument actually rest?</h2>
+      <p class="lede">Rate the strongest evidence your system has in each dimension. The profile shows which dimensions carry the argument, which are only asserted, and which are absent, then drafts a claim scoped to what the evidence supports.</p>
+    </div>
+
+    <div class="presets" role="group" aria-label="Example profiles">
+      <span class="presets-l">Load an example profile</span>
+      <button type="button" class="pill" data-preset="tele">Teleoperated laparoscopic robot</button>
+      <button type="button" class="pill" data-preset="soft">Soft continuum endoscope</button>
+      <button type="button" class="pill" data-preset="mag">Magnetically steered capsule</button>
+      <button type="button" class="pill" data-preset="auto">Autonomous needle insertion</button>
+      <button type="button" class="pill pill-clear" data-preset="clear">Clear</button>
+    </div>
+
+    <div class="map-grid">
+      <div class="matrix-wrap">
+        <table class="matrix" id="matrix">
+          <thead>
+            <tr><th scope="col">Dimension</th>
+              <th scope="col"><span>Not addressed</span></th>
+              <th scope="col"><span>Asserted</span></th>
+              <th scope="col"><span>Modelled</span></th>
+              <th scope="col"><span>Bench / phantom</span></th>
+              <th scope="col"><span>Ex vivo / cadaver</span></th>
+              <th scope="col"><span>In vivo / clinical</span></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="note" id="dimNote"></p>
+      </div>
+
+      <div class="readout">
+        <svg id="radar" viewBox="0 0 360 360" role="img" aria-label="Radar profile of evidence level per dimension"></svg>
+        <div class="readout-stats">
+          <div><span class="big" id="stCovered">0</span><small>dimensions with experimental evidence</small></div>
+          <div><span class="big" id="stAsserted">0</span><small>asserted or modelled only</small></div>
+          <div><span class="big" id="stMissing">7</span><small>not addressed</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="claim">
+      <div class="claim-form">
+        <div class="field"><label for="cSys">System</label><input id="cSys" type="text" value="Our system"></div>
+        <div class="field"><label for="cHaz">Hazard addressed</label>
+          <select id="cHaz">
+            <option>tissue perforation</option>
+            <option>excessive contact pressure on the lumen wall</option>
+            <option>unintended motion</option>
+            <option>loss of control after component failure</option>
+            <option>positioning error near critical anatomy</option>
+          </select></div>
+        <div class="field"><label for="cCond">Conditions</label><input id="cCond" type="text" value="at insertion speeds up to 10 mm/s"></div>
+      </div>
+      <div class="claim-out">
+        <p class="eyebrow">Drafted claim</p>
+        <p class="claim-txt" id="claimTxt"></p>
+        <ul class="gaps" id="gaps"></ul>
+        <button type="button" class="btn btn-ink" id="copyClaim">Copy claim</button>
+      </div>
+    </div>
+    <p class="fine">Example profiles are generic illustrations of how such systems are often argued in the literature, not assessments of any specific product or paper.</p>
+  </div>
+</section>
+
+<!-- ============ TERMINOLOGY ============ -->
+<section class="sec light" id="words">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-l">
+        <p class="eyebrow">Terminology</p>
+        <h2>Same word, different questions.</h2>
+        <p class="lede">Each community that builds or uses surgical robots reads a safety term through its own concerns. Pick a term to see the question each one tends to ask.</p>
+      </div>
+      <div class="split-r">
+        <div class="tabs" role="tablist" aria-label="Terms" id="termTabs"></div>
+        <div class="lenses" id="lenses" role="tabpanel"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMME ============ -->
+<section class="sec band" id="programme">
+  <div class="wrap">
+    <p class="eyebrow">Programme</p>
+    <h2>Four activities over a two-year term.</h2>
+
+    <div class="acts">
+      <article class="act" style="--c:var(--d1)">
+        <header><span class="act-tag">Annual</span><h3>Workshop</h3></header>
+        <p>One workshop a year at a RAS-sponsored conference such as ICRA, IROS, RoboSoft or BioRob. Each takes one question: the evidence a safety claim needs, failure behavior, softness and safe interaction, or safety under shared and autonomous control. A public summary records agreements, disagreements and open questions.</p>
+      </article>
+      <article class="act" style="--c:var(--d3)">
+        <header><span class="act-tag">4–6 episodes</span><h3>Expert interviews</h3></header>
+        <p>Short recorded interviews with researchers, clinicians and engineers. Each answers one focused question: which test is most informative, or which failure mode receives too little attention.</p>
+      </article>
+      <article class="act" style="--c:var(--d5)">
+        <header><span class="act-tag">Year 1</span><h3>Community survey</h3></header>
+        <p>How do you define technical safety, which measures and tests do you use, and which terms or evaluation gaps cause the most difficulty? Circulated internationally through RAS TCs, mailing lists and professional networks.</p>
+      </article>
+      <article class="act" style="--c:var(--d7)">
+        <header><span class="act-tag">Year 2</span><h3>Synthesis &amp; publication</h3></header>
+        <p>A public perspective or review paper mapping the main views and gaps, and a proposed special collection with an IEEE RAS journal such as T-MRB, T-RO or T-SRO.</p>
+      </article>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <div class="tl-track"><div class="tl-fill" id="tlFill"></div><span class="tl-now" id="tlNow">Now</span></div>
+      <div class="tl-years">
+        <div class="tl-y">
+          <h3>Year 1 <small>Gather</small></h3>
+          <ul><li>WG webpage and communication channels</li><li>First expert interviews</li><li>International community survey</li><li>First annual workshop</li><li>Collaboration with related TCs</li></ul>
+        </div>
+        <div class="tl-y">
+          <h3>Year 2 <small>Synthesize</small></h3>
+          <ul><li>Interview series continues</li><li>Second annual workshop</li><li>Survey and event findings combined</li><li>Special collection proposal</li><li>Perspective or review paper; renewal recommendation</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <dl class="outputs">
+      <div><dt>2</dt><dd>workshops at RAS-sponsored conferences</dd></div>
+      <div><dt>4–6</dt><dd>expert interviews</dd></div>
+      <div><dt>1</dt><dd>survey with public summary</dd></div>
+      <div><dt>1</dt><dd>journal special-collection proposal</dd></div>
+      <div><dt>1</dt><dd>perspective or review paper</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ PEOPLE ============ -->
+<section class="sec light" id="people">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-l">
+        <p class="eyebrow">People</p>
+        <h2>Founding leadership</h2>
+      </div>
+      <div class="split-r prose">
+        <p>Six members from five institutions. Each activity has one lead, with the others supporting where their expertise is needed. Every annual workshop includes at least one co-organizer and one invited speaker from North America and from the Asia-Pacific region.</p>
+      </div>
+    </div>
+    <div class="team" id="team"></div>
+
+    <div class="tcs">
+      <p class="eyebrow">Technical Committees</p>
+      <div class="tc-grid">
+        <a class="tc host" href="https://www.ieee-ras.org/technical-committees/healthcare-and-medical-robotics-cluster/" target="_blank" rel="noopener"><span class="tc-rel">Host</span><b>Surgical Robotics</b><small>Design, evaluation and use of robots for surgical and interventional procedures.</small></a>
+        <a class="tc" href="https://www.ieee-ras.org/technical-committees/list-of-technical-committees/" target="_blank" rel="noopener"><span class="tc-rel">Collaborating</span><b>Soft Robotics</b><small>Testing and comparison of soft and deformable systems.</small></a>
+        <a class="tc" href="https://www.ieee-ras.org/technical-committees/list-of-technical-committees/" target="_blank" rel="noopener"><span class="tc-rel">Collaborating</span><b>Performance Evaluation &amp; Benchmarking</b><small>Definitions, metrics and reproducible methodology.</small></a>
+        <a class="tc" href="https://www.ieee-ras.org/technical-committees/list-of-technical-committees/" target="_blank" rel="noopener"><span class="tc-rel">Liaison</span><b>Haptics</b><small>Touch, force interaction and haptic feedback.</small></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN ============ -->
+<section class="sec dark" id="join">
+  <div class="wrap join-in">
+    <div>
+      <p class="eyebrow">Get involved</p>
+      <h2>Bring your definition of safe.</h2>
+      <p class="lede">Researchers, clinicians and industry engineers are all welcome. Industry participation at the ICRA workshop included Johnson &amp; Johnson, Intuitive Surgical, EndoTheia and Dexterous Endoscopes.</p>
+      <div class="contact">
+        <span>Corresponding co-chair · Dr. Mostafa A. Atalla</span>
+        <div class="copy-row"><a id="mail" href="mailto:mostafa.a.atalla@gmail.com?subject=Safety%20in%20Surgical%20Robotics%20WG">mostafa.a.atalla@gmail.com</a><button type="button" class="btn btn-amber" id="copyMail">Copy</button></div>
+      </div>
+    </div>
+    <div class="ways">
+      <div class="way"><h3>Answer the survey</h3><p>Opens during Year 1. Link will appear here.</p><span class="status">Coming soon</span></div>
+      <div class="way"><h3>Attend a workshop</h3><p>Talks, a structured panel, contributed presentations and early-career awards.</p><span class="status">First edition: 2027</span></div>
+      <div class="way"><h3>Suggest an interview</h3><p>Nominate an expert, or a safety question that deserves more attention.</p></div>
+      <div class="way"><h3>Industry perspective</h3><p>Product development, testing and translation views, coordinated by Dr. Tim Horeman.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="logos">
+      <span class="logo-slot"><img src="assets/img/logos/ieee-ras.png" alt="IEEE Robotics and Automation Society" onerror="this.parentElement.classList.add('empty');this.remove()"><em>IEEE RAS</em></span>
+      <span class="logo-slot"><img src="assets/img/logos/tc-surgical-robotics.png" alt="TC on Surgical Robotics" onerror="this.parentElement.classList.add('empty');this.remove()"><em>TC Surgical Robotics</em></span>
+    </div>
+    <p>IEEE RAS Working Group on Safety in Surgical Robotics · Hosted by the Technical Committee on Surgical Robotics · Initial term 2026–2028</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
