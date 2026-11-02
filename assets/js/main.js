@@ -213,7 +213,7 @@ $('#tlNow').textContent = f >= 1 ? 'Term complete' : 'Now';
 
 /* ---------- team ---------- */
 const TEAM = [
-  ['Dr. Mostafa A. Atalla','TU Delft · University of Twente','Corresponding Founding Co-Chair','<b>Leads</b> overall coordination, liaison with the host TC and RAS, the expert interview series and communication.','atalla',4],
+  ['Dr. Mostafa A. Atalla','Delft University of Technology','Corresponding Founding Co-Chair','<b>Leads</b> overall coordination, liaison with the host TC and RAS, the expert interview series and communication.','atalla',4],
   ['Dr. Di Wu','University of Southern Denmark','Co-Chair','<b>Leads</b> workshop planning and the scientific programme.','wu',0],
   ['Dr. Julie Legrand','Eindhoven University of Technology','Co-Chair','<b>Leads</b> the community survey and its synthesis.','legrand',2],
   ['Dr. Linda Paternò','Scuola Superiore Sant’Anna','Co-Chair','<b>Leads</b> publication activity, including the journal special collection.','paterno',3],

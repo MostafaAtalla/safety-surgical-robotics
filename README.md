@@ -8,7 +8,7 @@ Static site (HTML/CSS/JS, no build step) for GitHub Pages.
 3. The site appears at `https://<user-or-org>.github.io/<repo>/` within a minute.
 
 ## Adding images
-- **Logos:** place official files at `assets/img/logos/ieee-ras.png` and `assets/img/logos/tc-surgical-robotics.png`. Until they exist, the footer shows text labels.
+- **Logos:** upload to `assets/img/logos/` with these names: ieee-ras.png, tc-surgical-robotics.png, tc-soft-robotics.png, tc-pebras.png, tc-haptics.png, tu-delft.png, sdu.png, tue.png, sssa.png. Missing logos show as dashed tiles with the name.
 - **Team photos:** place square-ish JPGs at `assets/img/team/{atalla,wu,legrand,paterno,horeman,menciassi}.jpg`. Missing photos fall back to coloured initials.
 
 ## Editing content
