@@ -15,3 +15,6 @@ Static site (HTML/CSS/JS, no build step) for GitHub Pages.
 - Text sections: `index.html`.
 - Evidence-map dimensions, example profiles, terminology questions, team and timeline dates: top-level arrays in `assets/js/main.js`.
 - Colours and type: tokens at the top of `assets/css/style.css`.
+
+## Workshops
+The workshop album is the `WS` array near the end of `assets/js/main.js`. Each entry takes venue, year, city, title, organizers and a link; co-chairs are bolded automatically.

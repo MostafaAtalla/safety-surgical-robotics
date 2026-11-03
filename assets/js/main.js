@@ -227,3 +227,70 @@ $('#team').innerHTML = TEAM.map(p => {
     <div class="person-b"><span class="role">${p[2]}</span><h3>${p[0]}</h3><span class="aff">${p[1]}</span><p class="lead-tag">${p[3]}</p></div></article>`;
 }).join('');
 })();
+
+/* ---------- workshops album ---------- */
+(() => {
+const CO = ['M. A. Atalla','D. Wu','J. Legrand','L. Paternò','T. Horeman','A. Menciassi'];
+const ART = {
+  a:'radial-gradient(circle at 78% 22%,#FFB020 0 18%,transparent 18.5%),repeating-radial-gradient(circle at 78% 22%,transparent 0 22px,rgba(255,255,255,.14) 22px 24px),linear-gradient(135deg,#0B1530,#2440D6)',
+  b:'repeating-linear-gradient(45deg,rgba(255,255,255,.12) 0 2px,transparent 2px 18px),linear-gradient(160deg,#0F7A55,#16AFC2)',
+  c:'radial-gradient(circle at 20% 80%,#E8508F 0 30%,transparent 30.5%),radial-gradient(circle at 85% 15%,#9A68FF 0 22%,transparent 22.5%),linear-gradient(135deg,#2A1650,#4C6BFF)',
+  d:'conic-gradient(from 210deg at 70% 35%,#FF6B4A,#FFB020,#FF6B4A 50%,#B8321A 50%,#B8321A)',
+  e:'repeating-radial-gradient(ellipse at 50% 120%,rgba(255,255,255,.16) 0 3px,transparent 3px 26px),linear-gradient(180deg,#9A68FF,#E8508F)',
+  f:'linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(135deg,#16AFC2,#2FBF71)'
+};
+const WS = [
+  {feature:1,badge:'Origin of this WG',venue:'ICRA',year:2026,city:'Vienna · 5 June',art:'a',
+   title:'Soft ≠ Safe? Rethinking Softness in Medical Robotics',
+   org:['M. A. Atalla','S. Sharma','T. Morimoto','T. Nanayakkara','R. J. Webster III','A. Menciassi'],url:'https://sites.google.com/view/rethinkingsoftness/home'},
+  {venue:'Hamlyn',year:2026,city:'London',art:'b',
+   title:'Smart by Structure: Designing Surgical Devices for Equity and Sustainability',
+   org:['B. Calmé','L. Mocellin','M. A. Atalla','Q. Boehler','C. Bergeles','T. Horeman','A. Menciassi'],
+   url:'https://www.hamlynsymposium.org/events/smart-by-structure-designing-surgical-devices-for-equity-and-sustainability/'},
+  {venue:'Hamlyn',year:2026,city:'London',art:'c',
+   title:'Soft Robotic Systems for Diagnostics and Therapy in Minimally Invasive and Endoluminal Interventions',
+   org:['N. N. Dei','A. B. Dawood','D. Osman','M. A. Atalla','K. Althoefer'],url:''},
+  {venue:'Hamlyn',year:2025,city:'London',art:'e',
+   title:'From Research to Clinical Practice: Bridging the Gap in Robotic Colonoscopy',
+   org:['M. Finocchiaro','M. A. Atalla','Y. Ge','L. Paternò','J. Kinross','M. Abayazid','T. Nanayakkara'],url:'https://sites.google.com/view/roboticcolonoscopywshsmr25/home'},
+  {venue:'RoboSoft',year:2025,city:'Lausanne',art:'d',
+   title:'Soft Robotics Mimicking the Human Body for Medical Applications',
+   org:['L. Lorenzon','M. A. Atalla','M. Maselli','M. Singh','L. Paternò','K. Suzumori'],url:'https://sites.google.com/view/softrobotics-in-medicine/home'},
+  {venue:'Hamlyn',year:2024,city:'London',art:'f',
+   title:'Bio-inspired Medical Robotics: From Evolution to Revolution in Healthcare',
+   org:['M. A. Atalla','D. Wu','L. Fichera','A. Sakes'],url:''}
+];
+const rail = document.getElementById('wsRail');
+rail.innerHTML = WS.map(w => `
+  <article class="album${w.feature?' feature':''}" data-y="${w.year}">
+    <div class="cover" style="--art:${ART[w.art]}">
+      <div class="cv-top"><span>${w.city} · ${w.year}</span>${w.badge?`<span class="cv-badge">${w.badge}</span>`:''}</div>
+      <div class="cv-venue">${w.venue}<small>${w.venue==='Hamlyn'?'Symposium on Medical Robotics':w.venue==='ICRA'?'IEEE Intl. Conf. on Robotics & Automation':'IEEE Intl. Conf. on Soft Robotics'}</small></div>
+    </div>
+    <div class="album-meta">
+      <h3>${w.title}</h3>
+      <p class="org">${w.org.map(n => CO.includes(n)?`<b>${n}</b>`:n).join(', ')}</p>
+      ${w.url?`<a class="lnk" href="${w.url}" target="_blank" rel="noopener">Workshop page ↗</a>`:''}
+    </div>
+  </article>`).join('') + `
+  <article class="album next" data-y="next">
+    <div class="cover"><div class="cv-top"><span>2027</span><span class="cv-badge">Planned</span></div>
+      <div class="cv-venue" style="font-size:clamp(2.2rem,5vw,3rem)">WG Workshop<small>First annual Working Group workshop at a RAS-sponsored conference</small></div></div>
+    <div class="album-meta"><h3>Theme and venue to be announced</h3><p class="org">Organized by the Working Group co-chairs with North American and Asia-Pacific co-organizers.</p></div>
+  </article>`;
+
+const prev = document.getElementById('wsPrev'), next = document.getElementById('wsNext');
+const step = () => (rail.querySelector('.album:not([hidden])')?.getBoundingClientRect().width || 300) + 22;
+prev.addEventListener('click', () => rail.scrollBy({left:-step()}));
+next.addEventListener('click', () => rail.scrollBy({left:step()}));
+const upd = () => { prev.disabled = rail.scrollLeft < 8; next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 8; };
+rail.addEventListener('scroll', upd, {passive:true}); addEventListener('resize', upd); upd();
+rail.addEventListener('keydown', e => { if (e.key==='ArrowRight'){e.preventDefault();next.click()} if (e.key==='ArrowLeft'){e.preventDefault();prev.click()} });
+document.querySelectorAll('#wsFilter .pill').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#wsFilter .pill').forEach(x => x.setAttribute('aria-pressed', x===b));
+  const y = b.dataset.y;
+  rail.querySelectorAll('.album').forEach(a => a.hidden = !(y==='all' || a.dataset.y===y || (y==='all' && a.dataset.y==='next')));
+  if (y==='all') rail.querySelector('.album.next').hidden = false;
+  rail.scrollTo({left:0}); setTimeout(upd, 350);
+}));
+})();

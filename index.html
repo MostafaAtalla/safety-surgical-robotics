@@ -18,7 +18,7 @@
 <header class="top" id="top">
   <div class="wrap top-in">
     <a class="brand" href="#hero">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 25 16 7l10 18" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="19" r="2.6" fill="var(--amber)"/></svg></span>
+      <span class="ras-chip"><img src="assets/img/logos/ieee-ras.png" alt="IEEE Robotics and Automation Society" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://www.ieee-ras.org/wp-content/smush-webp/2025/12/IEEE_RAS_logo_4C_stacked-HiRes.fw_.png.webp'}else{this.parentElement.remove()}"></span>
       <span class="brand-txt"><b>Safety in Surgical Robotics</b><small>IEEE RAS Working Group</small></span>
     </a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -27,6 +27,7 @@
       <a href="#map">Evidence map</a>
       <a href="#words">Terminology</a>
       <a href="#programme">Programme</a>
+      <a href="#workshops">Workshops</a>
       <a href="#people">People</a>
       <a href="#join" class="nav-cta">Get involved</a>
     </nav>
@@ -222,6 +223,33 @@
       <div><dt>1</dt><dd>perspective or review paper</dd></div>
     </dl>
   </div>
+</section>
+
+<!-- ============ WORKSHOPS ============ -->
+<section class="sec workshops" id="workshops">
+  <div class="wrap">
+    <div class="ws-head">
+      <div>
+        <p class="eyebrow">Workshops</p>
+        <h2>Where the conversation has been held.</h2>
+        <p class="lede">The group began at an ICRA 2026 workshop. The co-chairs have organized related workshops at ICRA, RoboSoft and the Hamlyn Symposium, each covering one part of the safety question.</p>
+      </div>
+      <div class="ws-ctrl">
+        <div class="ws-filter" role="group" aria-label="Filter by year" id="wsFilter">
+          <button type="button" class="pill" aria-pressed="true" data-y="all">All</button>
+          <button type="button" class="pill" aria-pressed="false" data-y="2026">2026</button>
+          <button type="button" class="pill" aria-pressed="false" data-y="2025">2025</button>
+          <button type="button" class="pill" aria-pressed="false" data-y="2024">2024</button>
+        </div>
+        <div class="ws-arrows">
+          <button type="button" class="arrow" id="wsPrev" aria-label="Previous workshops">&#8592;</button>
+          <button type="button" class="arrow" id="wsNext" aria-label="Next workshops">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ws-rail" id="wsRail" tabindex="0" aria-label="Workshop album"></div>
+  <div class="wrap"><p class="fine ws-fine">Co-chairs of the Working Group are shown in bold among each workshop's organizers.</p></div>
 </section>
 
 <!-- ============ PEOPLE ============ -->
