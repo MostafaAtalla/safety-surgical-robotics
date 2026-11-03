@@ -246,7 +246,7 @@ const WS = [
   {venue:'Hamlyn',year:2026,city:'London',art:'b',
    title:'Smart by Structure: Designing Surgical Devices for Equity and Sustainability',
    org:['B. Calmé','L. Mocellin','M. A. Atalla','Q. Boehler','C. Bergeles','T. Horeman','A. Menciassi'],
-   url:'https://www.hamlynsymposium.org/events/smart-by-structure-designing-surgical-devices-for-equity-and-sustainability/'},
+   url:''},
   {venue:'Hamlyn',year:2026,city:'London',art:'c',
    title:'Soft Robotic Systems for Diagnostics and Therapy in Minimally Invasive and Endoluminal Interventions',
    org:['N. N. Dei','A. B. Dawood','D. Osman','M. A. Atalla','K. Althoefer'],url:''},
@@ -281,12 +281,7 @@ rail.innerHTML = WS.map(w => `
       <p class="org">${w.org.map(n => CO.includes(n)?`<b>${n}</b>`:n).join(', ')}</p>
       ${w.url?`<a class="lnk" href="${w.url}" target="_blank" rel="noopener">Workshop page ↗</a>`:''}
     </div>
-  </article>`).join('') + `
-  <article class="album next" data-y="next">
-    <div class="cover"><div class="cv-top"><span>2027</span><span class="cv-badge">Planned</span></div>
-      <div class="cv-venue" style="font-size:clamp(2.2rem,5vw,3rem)">WG Workshop<small>First annual Working Group workshop at a RAS-sponsored conference</small></div></div>
-    <div class="album-meta"><h3>Theme and venue to be announced</h3><p class="org">Organized by the Working Group co-chairs with North American and Asia-Pacific co-organizers.</p></div>
-  </article>`;
+  </article>`).join('');
 
 /* screenshots: local file first, then a live capture of the workshop site, else the mock page stays */
 rail.querySelectorAll('.shot img').forEach(img => {
@@ -307,8 +302,7 @@ rail.addEventListener('keydown', e => { if (e.key==='ArrowRight'){e.preventDefau
 document.querySelectorAll('#wsFilter .pill').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('#wsFilter .pill').forEach(x => x.setAttribute('aria-pressed', x===b));
   const y = b.dataset.y;
-  rail.querySelectorAll('.album').forEach(a => a.hidden = !(y==='all' || a.dataset.y===y || (y==='all' && a.dataset.y==='next')));
-  if (y==='all') rail.querySelector('.album.next').hidden = false;
+  rail.querySelectorAll('.album').forEach(a => a.hidden = !(y==='all' || a.dataset.y===y));
   rail.scrollTo({left:0}); setTimeout(upd, 350);
 }));
 })();
