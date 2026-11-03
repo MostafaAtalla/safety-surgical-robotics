@@ -18,3 +18,5 @@ Static site (HTML/CSS/JS, no build step) for GitHub Pages.
 
 ## Workshops
 The workshop album is the `WS` array near the end of `assets/js/main.js`. Each entry takes venue, year, city, title, organizers and a link; co-chairs are bolded automatically.
+
+Workshop covers show a live capture of each workshop's website (via WordPress mShots), which can take a few seconds the first time a page is captured. To use your own screenshot instead, save it as `assets/img/workshops/<slug>.jpg`, for example `icra2026soft.jpg`, `hamlyn2026smart.jpg`, `hamlyn2026soft.jpg`, `hamlyn2025from.jpg`, `robosoft2025soft.jpg` or `hamlyn2024bioinspired.jpg`. A local file always takes priority.

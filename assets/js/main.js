@@ -261,10 +261,19 @@ const WS = [
    org:['M. A. Atalla','D. Wu','L. Fichera','A. Sakes'],url:''}
 ];
 const rail = document.getElementById('wsRail');
+const host = u => { try { return new URL(u).hostname.replace(/^www\./,'') + new URL(u).pathname.replace(/\/home\/?$/,'').replace(/\/$/,''); } catch(e){ return 'workshop page'; } };
+const slug = w => (w.venue + w.year + w.title.split(' ')[0]).toLowerCase().replace(/[^a-z0-9]/g,'');
 rail.innerHTML = WS.map(w => `
   <article class="album${w.feature?' feature':''}" data-y="${w.year}">
     <div class="cover" style="--art:${ART[w.art]}">
       <div class="cv-top"><span>${w.city} · ${w.year}</span>${w.badge?`<span class="cv-badge">${w.badge}</span>`:''}</div>
+      <a class="shot" ${w.url?`href="${w.url}" target="_blank" rel="noopener"`:'tabindex="-1" aria-hidden="true"'}>
+        <span class="shot-bar"><i></i><i></i><i></i><em>${w.url?host(w.url):'workshop page'}</em></span>
+        <span class="shot-body">
+          <span class="mock"><b>${w.venue} ${w.year} Workshop</b><strong>${w.title}</strong><span class="mock-lines"><i></i><i></i><i></i></span><span class="mock-org">${w.org.slice(0,4).join(' · ')}</span></span>
+          <img alt="" loading="lazy" data-local="assets/img/workshops/${slug(w)}.jpg" data-remote="${w.url?'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(w.url)+'?w=1000&h=750':''}">
+        </span>
+      </a>
       <div class="cv-venue">${w.venue}<small>${w.venue==='Hamlyn'?'Symposium on Medical Robotics':w.venue==='ICRA'?'IEEE Intl. Conf. on Robotics & Automation':'IEEE Intl. Conf. on Soft Robotics'}</small></div>
     </div>
     <div class="album-meta">
@@ -279,6 +288,15 @@ rail.innerHTML = WS.map(w => `
     <div class="album-meta"><h3>Theme and venue to be announced</h3><p class="org">Organized by the Working Group co-chairs with North American and Asia-Pacific co-organizers.</p></div>
   </article>`;
 
+/* screenshots: local file first, then a live capture of the workshop site, else the mock page stays */
+rail.querySelectorAll('.shot img').forEach(img => {
+  const ok = () => { if (img.naturalWidth >= 500) img.classList.add('on'); else retry(); };
+  let tries = 0;
+  const retry = () => { const r = img.dataset.remote; if (!r || tries > 2) return; tries++; setTimeout(() => { img.src = r + '&t=' + tries; }, tries === 1 ? 0 : 7000); };
+  img.addEventListener('load', ok);
+  img.addEventListener('error', () => { if (img.src.includes('assets/img/workshops/')) retry(); });
+  img.src = img.dataset.local;
+});
 const prev = document.getElementById('wsPrev'), next = document.getElementById('wsNext');
 const step = () => (rail.querySelector('.album:not([hidden])')?.getBoundingClientRect().width || 300) + 22;
 prev.addEventListener('click', () => rail.scrollBy({left:-step()}));
