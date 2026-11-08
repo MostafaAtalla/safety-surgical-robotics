@@ -14,6 +14,7 @@ nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classLi
 const QS = ['for which tissue?','under which load?','when which part fails?','with whom in control?','compared with what?','measured how?','for which procedure?'];
 let qi = 0; const qEl = $('#heroQ');
 if (!reduce) setInterval(() => {
+  if (document.documentElement.classList.contains('a11y-calm')) return;
   qEl.classList.add('out');
   setTimeout(() => { qi = (qi + 1) % QS.length; qEl.textContent = QS[qi]; qEl.classList.remove('out'); }, 350);
 }, 2600);
@@ -44,7 +45,7 @@ function drawField() {
 }
 function tick() {
   pts.forEach(p => { p.x += p.vx; p.y += p.vy; if (p.x<0||p.x>W) p.vx*=-1; if (p.y<0||p.y>H) p.vy*=-1; });
-  drawField(); if (!reduce && !document.hidden) requestAnimationFrame(tick);
+  drawField(); if (!reduce && !document.hidden && !document.documentElement.classList.contains('a11y-calm')) requestAnimationFrame(tick);
 }
 sizeField(); drawField(); if (!reduce) requestAnimationFrame(tick);
 addEventListener('resize', () => { sizeField(); drawField(); });
@@ -147,6 +148,7 @@ function render() {
   $('#gaps').innerHTML = g.slice(0,5).map(([i,s]) => `<li style="--c:${DCOL[i]}">${s}</li>`).join('') || '<li>Every dimension has experimental evidence. State the thresholds used.</li>';
 }
 render(); showDim(0);
+document.addEventListener('themechange', () => { render(); sizeField(); drawField(); });
 
 /* ---------- copy helpers ---------- */
 function copy(text, btn) {
