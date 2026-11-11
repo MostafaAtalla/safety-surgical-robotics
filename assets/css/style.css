@@ -246,8 +246,8 @@ p{margin:0}
 @media (max-width:520px){.lw-row-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* RAS logo in header */
-.ras-chip{display:flex;align-items:center;background:#fff;border-radius:8px;padding:4px 8px;height:42px}
-.ras-chip img{height:34px;width:auto;display:block}
+.ras-chip{flex:none;display:flex;align-items:center;background:#fff;border-radius:8px;padding:4px 8px;height:42px}
+.ras-chip img{height:34px;width:auto;max-width:none;flex:none;display:block}
 .ras-chip+.brand-txt{padding-left:.75rem;border-left:1px solid rgba(255,255,255,.25)}
 @media (max-width:420px){.brand-txt small{display:none}.ras-chip{height:36px}.ras-chip img{height:28px}}
 
@@ -416,3 +416,8 @@ html.a11y-links main a:not(.btn):not(.nav-cta):not(.shot):not(.tc),html.a11y-lin
   html.a11y-size-1 .nav.open,html.a11y-size-2 .nav.open{display:flex}
 }
 html.a11y-size-1 .brand-txt b,html.a11y-size-2 .brand-txt b{white-space:nowrap}
+
+/* co-chairs moved after scope; TCs stand alone */
+.sec.ruled{border-top:1px solid var(--line)}
+.tcs-solo{margin-top:0}
+.brand{min-width:0}.brand-txt{min-width:0}
